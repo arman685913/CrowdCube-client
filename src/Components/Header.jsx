@@ -62,10 +62,10 @@ const Header = () => {
         </div>
 
         {/* Right: Auth Buttons */}
-        <div className="navbar-end gap-2">
+        <div className="navbar-end gap-2 ">
           <Link
             to="/login"
-            className="btn btn-sm md:btn-md btn-outline"
+            className="btn text-green-600 btn-sm md:btn-md btn-outline"
           >
             Login
           </Link>
