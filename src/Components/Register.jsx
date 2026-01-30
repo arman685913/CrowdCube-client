@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Firebase/AuthProveder';
 import { toast } from 'react-toastify';
@@ -158,7 +158,7 @@ const Register = () => {
 
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account? Please-
-          <a href="/login" className="text-green-600 hover:underline font-medium"> Login</a>
+          <Link to="/login" className="text-green-600 hover:underline font-medium"> Login</Link>
         </p>
 
       </form>

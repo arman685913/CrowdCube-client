@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../Firebase/AuthProveder";
 
 const Footer = () => {
+
+  const { user } = useContext(AuthContext)
+
   return (
     <footer className="bg-neutral text-neutral-content mt-16">
       <div className="px-6 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -24,12 +29,17 @@ const Footer = () => {
         {/* Quick Links */}
         <div>
           <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
-          <ul className="space-y-2">
-            <li><Link to="/" className="hover:text-primary">Home</Link></li>
-            <li><Link to="/campaigns" className="hover:text-primary">All Campaign</Link></li>
-            <li><Link to="/addCampaign" className="hover:text-primary">Add Campaign</Link></li>
-            <li><Link to="/myCampaign" className="hover:text-primary">My Campaign</Link></li>
-          </ul>
+            <ul className="space-y-2">
+              <li><Link to="/" className="hover:text-primary">Home</Link></li>
+              <li><Link to="/campaigns" className="hover:text-primary">All Campaign</Link></li>
+
+              {
+                user && <>
+                  <li><Link to="/addCampaign" className="hover:text-primary">Add Campaign</Link></li>
+                  <li><Link to="/myCampaign" className="hover:text-primary">My Campaign</Link></li>
+                </>
+              }
+            </ul>
         </div>
 
         {/* Support */}
@@ -50,10 +60,9 @@ const Footer = () => {
           <p className="text-sm mt-1">Phone: +880 1234 567890</p>
 
           <div className="flex gap-4 mt-4 text-lg">
-            <a className="hover:text-primary" href="#"><FaFacebookF /></a>
-            <a className="hover:text-primary" href="#"><FaTwitter /></a>
-            <a className="hover:text-primary" href="#"><FaLinkedinIn /></a>
-            <a className="hover:text-primary" href="#"><FaGithub /></a>
+            <a className="hover:text-primary" href="https://facebook.com"><FaFacebookF /></a>
+            <a className="hover:text-primary" href="https://twitter.com"><FaTwitter /></a>
+            <a className="hover:text-primary" href="https://www.linkedin.com/"><FaLinkedinIn /></a>
           </div>
         </div>
 

@@ -1,21 +1,43 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Firebase/AuthProveder";
+import { toast } from "react-toastify";
 
 const Header = () => {
 
+  const { user, logOut } = useContext(AuthContext)
+
+
   const navItemClass = ({ isActive }) =>
     isActive
-      ? "text-green-600 font-semibold border-b-3 border-green-600"
+      ? "text-green-600 font-semibold border-b-2 border-green-600"
       : "hover:text-green-600 transition";
 
   const links = (
-    <>
-      <NavLink to="/" className={navItemClass}>Home</NavLink>
-      <NavLink to="/campaigns" className={navItemClass}>All Campaign</NavLink>
-      <NavLink to="/addCampaign" className={navItemClass}>Add Campaign</NavLink>
-      <NavLink to="/myCampaign" className={navItemClass}>My Campaign</NavLink>
-      <NavLink to="/donation" className={navItemClass}>Donation</NavLink>
-    </>
-  );
+  <>
+    <NavLink to="/" className={navItemClass}>Home</NavLink>
+    <NavLink to="/campaigns" className={navItemClass}>All Campaign</NavLink>
+
+    {
+      user && <>
+        <NavLink to="/addCampaign" className={navItemClass}>Add Campaign</NavLink>
+        <NavLink to="/myCampaign" className={navItemClass}>My Campaign</NavLink>
+        <NavLink to="/myDonations" className={navItemClass}>My Donations</NavLink>
+      </>
+    }
+  </>
+);
+
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        toast.info('Sign-out successful.')
+      }).catch((error) => {
+        // An error happened.
+        toast.error(error.message)
+      });
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md ">
@@ -63,18 +85,35 @@ const Header = () => {
 
         {/* Right: Auth Buttons */}
         <div className="navbar-end gap-2 ">
-          <Link
-            to="/login"
-            className="btn text-green-600 btn-sm md:btn-md btn-outline"
-          >
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className="btn btn-sm md:btn-md text-white hover:bg-green-500 bg-green-600"
-          >
-            Register
-          </Link>
+
+          {
+            user ? <img
+              className="w-10 h-10 rounded-full cursor-pointer"
+              src={user.photoURL}
+              alt={user.displayName}
+              title={user.displayName}
+            /> :
+              <Link
+                to="/login"
+                className="btn text-green-600 btn-sm md:btn-md btn-outline"
+              >
+                Login
+              </Link>
+          }
+          {
+            user ? <button
+              className="btn btn-sm md:btn-md text-white hover:bg-green-500 bg-green-600" onClick={handleLogout}
+            >
+              Log out
+            </button> :
+              <Link
+                to="/register"
+                className="btn btn-sm md:btn-md text-white hover:bg-green-500 bg-green-600"
+              >
+                Register
+              </Link>
+          }
+
         </div>
 
       </div>

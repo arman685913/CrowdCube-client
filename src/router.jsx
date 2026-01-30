@@ -8,6 +8,8 @@ import Register from "./Components/Register.jsx";
 import AddCampaign from "./Components/AddCampaign.jsx";
 import Donation from "./Components/Donation.jsx";
 import MyCampaign from "./Components/MyCampaign.jsx";
+import Private from "./Components/Private.jsx";
+import Error from "./Components/Error.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,18 +31,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/addCampaign",
-        Component: AddCampaign
+        element : <Private><AddCampaign></AddCampaign></Private>,
       },
       {
-        path: "/donation",
-        Component: Donation
+        path: "/myDonations",
+        element : <Private><Donation></Donation></Private>
       },
       {
         path: "/myCampaign",
-        Component: MyCampaign
+        element : <Private><MyCampaign></MyCampaign></Private>
       },
     ],
   },
+  {
+        path: "/*",
+        Component: Error
+      },
 ]);
 
 export default router;
