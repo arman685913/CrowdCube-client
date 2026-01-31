@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
     }
     const signInGit = () => {
-        return signInWithPopup(auth, provider);
+        return signInWithPopup(auth, providerGit);
         setLoading(true)
     }
 

@@ -10,6 +10,7 @@ import Donation from "./Components/Donation.jsx";
 import MyCampaign from "./Components/MyCampaign.jsx";
 import Private from "./Components/Private.jsx";
 import Error from "./Components/Error.jsx";
+import Details from "./Components/Details.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,12 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       {
         path: "/campaigns",
-        Component: Campaigns
+        Component: Campaigns,
+        loader: async () => {
+          const res = await fetch('http://localhost:3000/campaigns');
+          const data = await res.json();
+          return data;
+        }
       },
       {
         path: "/login",
@@ -31,22 +37,26 @@ const router = createBrowserRouter([
       },
       {
         path: "/addCampaign",
-        element : <Private><AddCampaign></AddCampaign></Private>,
+        element: <Private><AddCampaign></AddCampaign></Private>,
+      },
+      {
+        path: "/campaigns/:id",
+        element: <Private><Details></Details></Private>,
       },
       {
         path: "/myDonations",
-        element : <Private><Donation></Donation></Private>
+        element: <Private><Donation></Donation></Private>
       },
       {
         path: "/myCampaign",
-        element : <Private><MyCampaign></MyCampaign></Private>
+        element: <Private><MyCampaign></MyCampaign></Private>
       },
     ],
   },
   {
-        path: "/*",
-        Component: Error
-      },
+    path: "/*",
+    Component: Error
+  },
 ]);
 
 export default router;

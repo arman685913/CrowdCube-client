@@ -75,11 +75,24 @@ const Login = () => {
                 const user = result.user;
                 setUser(user);
                 // Save user to DB if needed
-                fetch('http://localhost:3000/users', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name: user.displayName, email: user.email, photo: user.photoURL })
-                });
+                const isNewUser = result?._tokenResponse?.isNewUser;
+                // Save user to DB if needed
+                if (isNewUser) {
+                    fetch('http://localhost:3000/users', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name: user.displayName, email: user.email, photo: user.photoURL || '' })
+                    });
+                } else {
+                    fetch(`http://localhost:3000/users/${user.email}`, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: user.displayName,
+                            photo: user.photoURL
+                        })
+                    });
+                }
 
                 toast.success("Logged in with Google");
                 if (location.state?.from) {
@@ -98,13 +111,25 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
-                // Save user to DB if needed
-                fetch('http://localhost:3000/users', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name: user.displayName, email: user.email, photo: user.photoURL || '' })
-                });
 
+                const isNewUser = result?._tokenResponse?.isNewUser;
+                // Save user to DB if needed
+                if (isNewUser) {
+                    fetch('http://localhost:3000/users', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name: user.displayName, email: user.email, photo: user.photoURL || '' })
+                    });
+                } else {
+                    fetch(`http://localhost:3000/users/${user.email}`, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: user.displayName,
+                            photo: user.photoURL
+                        })
+                    });
+                }
                 toast.success("Logged in with Github");
 
                 if (location.state?.from) {
@@ -114,7 +139,10 @@ const Login = () => {
                 }
             })
             .catch((error) => {
-                toast.error(error.message);
+                if (error.code === "auth/account-exists-with-different-credential") {
+                    toast.error("This email is already in use with Google or another sign-in method.");
+                }
+
                 console.log(error);
             });
     };
@@ -150,7 +178,7 @@ const Login = () => {
                             placeholder="Password"
                             required
                         />
-                        <div className='absolute top-37 right-4 text-gray-600 cursor-pointer'>
+                        <div className='absolute bottom-2 right-4 text-gray-600 cursor-pointer'>
                             {eye ? <FaEye onClick={() => setEye(!eye)} /> : <FaRegEyeSlash onClick={() => setEye(!eye)} />}
                         </div>
                         {errorMessage && <p className='text-sm text-red-500 italic'>{errorMessage}</p>}
