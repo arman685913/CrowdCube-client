@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../Firebase/AuthProveder';
+import { AuthContext } from '../Firebase/AuthProvider';
 import { toast } from 'react-toastify';
 import { updateProfile } from 'firebase/auth';
 
@@ -143,7 +143,7 @@ const Register = () => {
               placeholder="Password"
               required
             />
-            <div className='absolute top-28 right-4 text-gray-600 cursor-pointer'>
+            <div className='absolute bottom-11 right-4 text-gray-600 cursor-pointer'>
               {eye ? <FaEye onClick={() => setEye(!eye)} /> : <FaRegEyeSlash onClick={() => setEye(!eye)} />}
             </div>
             {errorMessage && <p className='text-sm text-red-500 italic'>{errorMessage}</p>}

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../Firebase/AuthProveder';
+import { AuthContext } from '../Firebase/AuthProvider';
 import { toast } from 'react-toastify';
 
 const Details = () => {

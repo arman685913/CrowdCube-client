@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../Firebase/AuthProveder';
+import { AuthContext } from '../Firebase/AuthProvider';
 import { toast } from 'react-toastify';
 import { FaEye } from 'react-icons/fa';
 import { FaRegEyeSlash } from 'react-icons/fa';
@@ -61,8 +61,8 @@ const Login = () => {
                 const msg = error.code;
                 if (msg === "auth/user-not-found" || msg === "auth/wrong-password") {
                     toast.error("Invalid email or password");
-                } else {
-                    toast.error(error.message);
+                } else if(error.message == 'Firebase: Error (auth/invalid-credential).' ) {
+                    toast.error("Invalid email or password");
                 }
             });
 

@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { RouterProvider } from "react-router/dom";
 import './index.css'
 import router from './router.jsx';
-import AuthProvider from './Firebase/AuthProveder.jsx';
+import AuthProvider from './Firebase/AuthProvider.jsx';
 import { ToastContainer } from 'react-toastify';
 
 createRoot(document.getElementById('root')).render(

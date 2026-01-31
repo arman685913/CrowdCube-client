@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { useContext } from "react";
-import { AuthContext } from "../Firebase/AuthProveder";
+import { AuthContext } from "../Firebase/AuthProvider";
 
 const Footer = () => {
 
