@@ -78,14 +78,14 @@ const Register = () => {
           .then(data => {
             if (data.insertedId) {
               navigate('/');
-              console.log("createdUser saved in DB:", createdUser);
+              // console.log("createdUser saved in DB:", createdUser);
             }
           });
         });
       })
       .catch(error => {
         if (error.message === "Firebase: Error (auth/email-already-in-use).") {
-          toast.error('This email is already in use');
+          toast.error('This email is already in use with Google or another sign-in method.');
         } else {
           toast.error(error.message);
         }
@@ -143,18 +143,23 @@ const Register = () => {
               placeholder="Password"
               required
             />
-            <div className='absolute bottom-11 right-4 text-gray-600 cursor-pointer'>
+            <div className='absolute bottom-2.5 right-4 text-gray-600 cursor-pointer'>
               {eye ? <FaEye onClick={() => setEye(!eye)} /> : <FaRegEyeSlash onClick={() => setEye(!eye)} />}
             </div>
-            {errorMessage && <p className='text-sm text-red-500 italic'>{errorMessage}</p>}
+            
           </div>
 
         </div>
-
+        {/* error msg */}
+        <div className='mt-2 text-right'>
+        {errorMessage && <p className='text-sm text-red-500 italic'>{errorMessage}</p>}
+        </div>
         {/* Register Button */}
-        <button type='submit' className="btn w-full mt-6 border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition">
+        <button type='submit' className="btn w-full mt-3 border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition">
           Register
         </button>
+
+        
 
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account? Please-

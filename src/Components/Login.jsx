@@ -61,7 +61,7 @@ const Login = () => {
                 const msg = error.code;
                 if (msg === "auth/user-not-found" || msg === "auth/wrong-password") {
                     toast.error("Invalid email or password");
-                } else if(error.message == 'Firebase: Error (auth/invalid-credential).' ) {
+                } else if (error.message == 'Firebase: Error (auth/invalid-credential).') {
                     toast.error("Invalid email or password");
                 }
             });
@@ -178,16 +178,18 @@ const Login = () => {
                             placeholder="Password"
                             required
                         />
-                        <div className='absolute bottom-2 right-4 text-gray-600 cursor-pointer'>
+                        <div className='absolute bottom-2.5 right-4 text-gray-600 cursor-pointer'>
                             {eye ? <FaEye onClick={() => setEye(!eye)} /> : <FaRegEyeSlash onClick={() => setEye(!eye)} />}
                         </div>
+                        
+                    </div>
+                        {/* error msg */}
+                    <div className='mt-2 '>
                         {errorMessage && <p className='text-sm text-red-500 italic'>{errorMessage}</p>}
                     </div>
 
-
-
                     {/* Login Button */}
-                    <button type='submit' className="btn w-full mt-6 border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition">
+                    <button type='submit' className="btn w-full mt-4 border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition">
                         Login
                     </button>
 
