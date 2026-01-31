@@ -7,7 +7,6 @@ const Private = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
 
     const location = useLocation()
-    console.log(location)
 
     if (loading) {
         return <div className='min-h-screen flex gap-3 justify-center items-center'><span className="loading loading-dots loading-xs"></span>

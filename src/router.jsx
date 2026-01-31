@@ -42,6 +42,11 @@ const router = createBrowserRouter([
       {
         path: "/campaigns/:id",
         element: <Private><Details></Details></Private>,
+        loader: async ({params}) => {
+          const res = await fetch(`http://localhost:3000/campaigns/${params.id}`);
+          const data = await res.json();
+          return data;
+        }
       },
       {
         path: "/myDonations",
