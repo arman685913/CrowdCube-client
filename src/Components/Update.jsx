@@ -29,7 +29,7 @@ const Update = () => {
       return toast.info("Minimum donation must be greater than 0");
     }
 
-    fetch(`http://localhost:3000/campaigns/${id}`, {
+    fetch(`https://crowdcube-server.onrender.com/campaigns/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedCampaign)

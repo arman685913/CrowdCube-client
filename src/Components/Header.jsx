@@ -5,6 +5,7 @@ import { AuthContext } from "../Firebase/AuthProvider";
 import { toast } from "react-toastify";
 import ThemeToggle from "./ToggleTheme";
 import { Typewriter } from "react-simple-typewriter";
+import { useState } from "react";
 
 const Header = () => {
 
@@ -31,6 +32,8 @@ const Header = () => {
     </>
   );
 
+  const [dropdown, setDropDown ] = useState(false);
+
 
   const handleLogout = () => {
     logOut()
@@ -48,10 +51,11 @@ const Header = () => {
 
         {/* Left: Logo */}
         <div className="navbar-start">
-          <div className="dropdown" data-tooltip-id="theme-tooltipLight"
+          <div onClick={() => setDropDown(!dropdown)} className="dropdown" data-tooltip-id="theme-tooltipLight"
             data-tooltip-content="Menu">
-            <Tooltip id="theme-tooltipLight" place="bottom" />
-
+              {
+                dropdown ?<Tooltip id="theme-tooltipLight" place="top" /> : '' 
+              }
             <label tabIndex={0} className="btn text-red-600 btn-ghost pr-2 pl-0 lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

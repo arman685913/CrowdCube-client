@@ -26,7 +26,7 @@ const Details = () => {
             donatedAt: new Date().toISOString()
         };
 
-        fetch('http://localhost:3000/donated', {
+        fetch('https://crowdcube-server.onrender.com/donated', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(donationData)

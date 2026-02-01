@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, Component: Home ,
         loader: async () => {
-          const res = await fetch('http://localhost:3000/campaigns/active');
+          const res = await fetch('https://crowdcube-server.onrender.com/campaigns/active');
           const data = await res.json();
           return data;
         }
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         path: "/campaigns",
         Component: Campaigns,
         loader: async () => {
-          const res = await fetch('http://localhost:3000/campaigns');
+          const res = await fetch('https://crowdcube-server.onrender.com/campaigns');
           const data = await res.json();
           return data;
         }
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         path: "/campaigns/:id",
         element: <Private><Details></Details></Private>,
         loader: async ({params}) => {
-          const res = await fetch(`http://localhost:3000/campaigns/${params.id}`);
+          const res = await fetch(`https://crowdcube-server.onrender.com/campaigns/${params.id}`);
           const data = await res.json();
           return data;
         }
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <Private><Update></Update></Private>,
         loader: async ({params}) => {
-          const res = await fetch(`http://localhost:3000/campaigns/${params.id}`);
+          const res = await fetch(`https://crowdcube-server.onrender.com/campaigns/${params.id}`);
           const data = await res.json();
           return data;
         }
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         path: "/myDonations",
         element: <Private><Donation></Donation></Private>,
         loader: async () => {
-          const res = await fetch('http://localhost:3000/donated');
+          const res = await fetch('https://crowdcube-server.onrender.com/donated');
           const data = await res.json();
           return data;
         }
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
         path: "/myCampaign",
         element: <Private><MyCampaign></MyCampaign></Private>,
         loader: async () => {
-          const res = await fetch('http://localhost:3000/campaigns');
+          const res = await fetch('https://crowdcube-server.onrender.com/campaigns');
           const data = await res.json();
           return data;
         }

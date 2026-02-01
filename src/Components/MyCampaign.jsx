@@ -26,7 +26,7 @@ const MyCampaign = () => {
 
       if (!result.isConfirmed) return;
 
-      fetch(`http://localhost:3000/campaigns/${id}`, {
+      fetch(`https://crowdcube-server.onrender.com/campaigns/${id}`, {
         method: 'DELETE'
       })
         .then(res => res.json())

@@ -69,7 +69,7 @@ const Register = () => {
           });
 
           // Save to database
-          fetch('http://localhost:3000/users', {
+          fetch('https://crowdcube-server.onrender.com/users', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, photo })

@@ -78,13 +78,13 @@ const Login = () => {
                 const isNewUser = result?._tokenResponse?.isNewUser;
                 // Save user to DB if needed
                 if (isNewUser) {
-                    fetch('http://localhost:3000/users', {
+                    fetch('https://crowdcube-server.onrender.com/users', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ name: user.displayName, email: user.email, photo: user.photoURL || '' })
                     });
                 } else {
-                    fetch(`http://localhost:3000/users/${user.email}`, {
+                    fetch(`https://crowdcube-server.onrender.com/users/${user.email}`, {
                         method: 'PATCH',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -115,13 +115,13 @@ const Login = () => {
                 const isNewUser = result?._tokenResponse?.isNewUser;
                 // Save user to DB if needed
                 if (isNewUser) {
-                    fetch('http://localhost:3000/users', {
+                    fetch('https://crowdcube-server.onrender.com/users', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ name: user.displayName, email: user.email, photo: user.photoURL || '' })
                     });
                 } else {
-                    fetch(`http://localhost:3000/users/${user.email}`, {
+                    fetch(`https://crowdcube-server.onrender.com/users/${user.email}`, {
                         method: 'PATCH',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
