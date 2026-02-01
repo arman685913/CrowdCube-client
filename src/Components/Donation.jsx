@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useLoaderData, Link } from 'react-router-dom';
 import { AuthContext } from '../Firebase/AuthProvider';
+import { Typewriter } from 'react-simple-typewriter';
 
 const Donation = () => {
 
@@ -15,6 +16,20 @@ const Donation = () => {
 
     return (
         <div className="px-4 md:px-10 lg:px-20 py-10">
+            <h1 className='font-bold text-xl  md:text-2xl lg:text-3xl dark:text-white text-green-700 mb-5'>
+                <span>
+                    <Typewriter
+                        words={['My Donation']}
+                        loop={0} // 0 = infinite
+                        cursor
+                        cursorStyle="_"
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1000}
+                    />
+                </span>
+
+            </h1>
             {myDonations.length === 0 ? (
                 <div className="flex justify-center items-center border rounded-4xl px-4 md:px-10 lg:px-20 py-10 border-green-300 ">
                     <p>You have not donated to any campaign yet.</p>

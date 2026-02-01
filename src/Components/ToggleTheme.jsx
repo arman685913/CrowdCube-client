@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { Tooltip } from "react-tooltip";
 
 const ThemeToggle = () => {
 
@@ -31,10 +32,10 @@ const ThemeToggle = () => {
     } else {
       newTheme = "light";
     }
-    
+
     setTheme(newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme); 
-    document.documentElement.classList.toggle("dark", newTheme === "dark"); 
+    document.documentElement.setAttribute("data-theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
     localStorage.setItem("theme", newTheme);
   };
 
@@ -43,10 +44,21 @@ const ThemeToggle = () => {
       <input type="checkbox" onChange={toggleTheme} checked={theme === "dark"} />
 
       {/* Sun Icon */}
-      <FaSun className="text-yellow-400 h-6 w-6  lg:h-8 lg:w-8 swap-off fill-current" />
+      <FaSun
+        data-tooltip-id="theme-tooltipLight"
+        data-tooltip-content="Switch to dark mode"
+        className="text-yellow-400 h-6 w-6 lg:h-8 lg:w-8 swap-off fill-current"
+      />
+      <Tooltip id="theme-tooltipLight" place="bottom" />
 
       {/* Moon Icon */}
-      <FaMoon className="text-yellow-400 h-6 w-6  lg:h-8 lg:w-8 swap-on    fill-current" />
+      <FaMoon
+        data-tooltip-id="theme-tooltip"
+        data-tooltip-content="Switch to light mode"
+        className="text-sky-600 h-6 w-6 lg:h-8 lg:w-8 swap-on fill-current"
+      />
+
+      <Tooltip id="theme-tooltip" place="bottom" />
     </label>
   );
 };

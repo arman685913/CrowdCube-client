@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Tooltip } from 'react-tooltip'
 import { AuthContext } from "../Firebase/AuthProvider";
 import { toast } from "react-toastify";
 import ThemeToggle from "./ToggleTheme";
+import { Typewriter } from "react-simple-typewriter";
 
 const Header = () => {
 
@@ -46,7 +48,10 @@ const Header = () => {
 
         {/* Left: Logo */}
         <div className="navbar-start">
-          <div className="dropdown ">
+          <div className="dropdown" data-tooltip-id="theme-tooltipLight"
+            data-tooltip-content="Menu">
+            <Tooltip id="theme-tooltipLight" place="bottom" />
+
             <label tabIndex={0} className="btn text-red-600 btn-ghost pr-2 pl-0 lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +78,15 @@ const Header = () => {
             to="/"
             className="text-xl md:text-2xl font-bold tracking-wide text-green-600"
           >
-            Crowd<span className="text-red-600 ">Cube</span>
+            Crowd<span className="text-red-600 ">Cube<Typewriter
+              words={['']}
+              loop={0} // 0 = infinite
+              cursor
+              cursorStyle="..."
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            /></span>
           </Link>
         </div>
 
@@ -91,16 +104,20 @@ const Header = () => {
 
           <ThemeToggle />
 
-          
+
 
 
           {
-            user ? <img
-              className="w-10 h-10 rounded-full cursor-pointer"
+            user ? <div><img
+              data-tooltip-id="user-tooltip"
+              data-tooltip-content={user.displayName}
+              className="md:w-10 md:h-10 h-7 w-7 rounded-full cursor-pointer"
               src={user.photoURL}
               alt={user.displayName}
-              title={user.displayName}
-            /> :
+            />
+
+              <Tooltip id="user-tooltip" place="bottom" />
+            </div> :
               <Link
                 to="/login"
                 className="btn btn-xs md:btn-sm lg:btn-md text-green-600  btn-outline"

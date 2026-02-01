@@ -2,6 +2,8 @@
 import React from 'react';
 import { useLoaderData, Link } from 'react-router-dom';
 import Banner from './Banner'
+import { Fade } from "react-awesome-reveal";
+import { Typewriter } from 'react-simple-typewriter';
 
 
 const Home = () => {
@@ -13,29 +15,45 @@ const Home = () => {
             <div className="px-4 py-5">
 
 
-                <h2 className="text-2xl font-bold mb-6 text-green-700 dark:text-white">Running Campaigns</h2>
+                <h1 className='font-bold text-xl  md:text-2xl lg:text-3xl dark:text-white text-green-700 mb-5'>
+                    <span>
+                        <Typewriter
+                            words={['Running Campaigns']}
+                            loop={0} // 0 = infinite
+                            cursor
+                            cursorStyle="_"
+                            typeSpeed={70}
+                            deleteSpeed={50}
+                            delaySpeed={1000}
+                        />
+                    </span>
+
+                </h1>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {campaigns.map(c => (
-                        <div key={c._id} className="bg-white dark:bg-black rounded-lg shadow-md overflow-hidden">
-                            <img src={c.photo} alt={c.Campaign} className="w-full h-48 object-cover" />
-                            <div className="p-4">
-                                <h3 className="font-bold text-lg">{c.Campaign}</h3>
-                                <p className="text-sm text-gray-600">{c.type}</p>
-                                <p className="text-sm text-gray-600">Min Donation: {c.amount} Tk</p>
-                                <p className="text-sm text-gray-600">
-                                    Deadline: {new Date(c.date).toLocaleDateString()}
-                                </p>
-                                <Link
-                                    to={`/campaigns/${c._id}`}
-                                    className="btn btn-sm mt-2 w-full text-green-600 border border-green-600 hover:bg-green-600 hover:text-white"
-                                >
-                                    See More
-                                </Link>
-                            </div>
-                        </div>
+                        <Fade direction="up" triggerOnce>
+                            <div key={c._id} className="bg-white dark:bg-black rounded-lg shadow-md overflow-hidden">
+                                <img src={c.photo} alt={c.Campaign} className="w-full h-48 object-cover" />
+                                <div className="p-4">
+                                    <h3 className="font-bold text-lg dark:text-white">{c.Campaign}</h3>
+                                    <p className="text-sm text-gray-600 dark:text-white/60">{c.type}</p>
+                                    <p className="text-sm text-gray-600 dark:text-white/60">Min Donation: {c.amount} Tk</p>
+                                    <p className="text-sm text-gray-600 dark:text-white/60">
+                                        Deadline: {new Date(c.date).toLocaleDateString()}
+                                    </p>
+                                    <Link
+                                        to={`/campaigns/${c._id}`}
+                                        className="btn btn-sm mt-2 w-full text-green-600 border border-green-600 hover:bg-green-600 hover:text-white"
+                                    >
+                                        See More
+                                    </Link>
+                                </div>
+                            </div></Fade>
                     ))}
                 </div>
+
+
             </div>
 
             <section className="my-16 p-10 rounded-lg dark:bg-gray-900 bg-green-50">

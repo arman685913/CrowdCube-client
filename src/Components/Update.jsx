@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../Firebase/AuthProvider';
 import { toast } from 'react-toastify';
+import { Typewriter } from 'react-simple-typewriter';
 
 const Update = () => {
 
@@ -54,8 +55,16 @@ const Update = () => {
       >
 
         <legend className="lg:text-3xl text-2xl font-semibold absolute -top-6 left-6 text-green-600 dark:text-white">
-          Update Campaign
-        </legend>
+                            <Typewriter
+                                words={['Update Campaign']}
+                                loop={0} // 0 = infinite
+                                cursor
+                                cursorStyle="_"
+                                typeSpeed={70}
+                                deleteSpeed={50}
+                                delaySpeed={1000}
+                            />
+                        </legend>
 
         <div className="flex flex-col md:flex-row gap-6 justify-center ">
 

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Firebase/AuthProvider';
 import { toast } from 'react-toastify';
+import { Typewriter } from 'react-simple-typewriter';
 
 const AddCampaign = () => {
 
@@ -39,7 +40,15 @@ const AddCampaign = () => {
             <form onSubmit={handleAddCampaign} className="relative bg-gray-100 border border-green-300 rounded-lg w-full max-w-6xl p-6 md:p-10 shadow-md dark:bg-black">
 
                 <legend className="lg:text-3xl text-2xl font-semibold absolute -top-6 left-6 text-green-600 dark:text-white">
-                    Add Campaign
+                    <Typewriter
+                        words={['Add Campaign']}
+                        loop={0} // 0 = infinite
+                        cursor
+                        cursorStyle="_"
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1000}
+                    />
                 </legend>
 
                 {/* Form */}
