@@ -10,7 +10,7 @@ const Campaigns = () => {
       {/* Desktop Table */}
       <div className="hidden md:block">
         <table className="table w-full border border-green-300">
-          <thead className="bg-green-100">
+          <thead className="bg-green-100 dark:bg-black">
             <tr>
               <th>Active</th>
               <th>Name</th>
@@ -23,7 +23,7 @@ const Campaigns = () => {
           </thead>
           <tbody>
             {allCampaigns.map((campaign, index) => (
-              <tr key={index} className="hover:bg-gray-100">
+              <tr key={index} className="hover:bg-gray-100 dark:hover:bg-black/30">
                 <th>
                   <input
                     type="checkbox"
@@ -61,7 +61,7 @@ const Campaigns = () => {
       {/* Mobile Cards */}
       <div className="md:hidden grid grid-cols-1 gap-6">
         {allCampaigns.map((campaign, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-md p-4 flex flex-col">
+          <div key={index} className="bg-white dark:bg-black rounded-lg shadow-md p-4 flex flex-col">
             <div className="relative">
               <img
                 src={campaign.photo}
@@ -78,10 +78,10 @@ const Campaigns = () => {
               </div>
             </div>
             <h2 className="mt-2 font-bold text-lg">{campaign.Campaign}</h2>
-            <p className="text-sm text-gray-600">Type: {campaign.type}</p>
-            <p className="text-sm text-gray-600">Deadline: {campaign.date}</p>
-            <p className="text-sm text-gray-600">Min. Donation: {campaign.amount} Tk</p>
-            <p className="text-sm text-gray-600">Author: {campaign.name}</p>
+            <p className="text-sm text-gray-600 dark:text-white/70">Type: {campaign.type}</p>
+            <p className="text-sm text-gray-600 dark:text-white/70">Deadline: {campaign.date}</p>
+            <p className="text-sm text-gray-600 dark:text-white/70">Min. Donation: {campaign.amount} Tk</p>
+            <p className="text-sm text-gray-600 dark:text-white/70">Author: {campaign.name}</p>
             <Link
               to={`/campaigns/${campaign._id}`}
               className="btn btn-xs mt-2 text-green-600 btn-outline hover:bg-green-600 hover:text-white"

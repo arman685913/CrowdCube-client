@@ -13,11 +13,11 @@ const Home = () => {
             <div className="px-4 py-5">
 
 
-                <h2 className="text-2xl font-bold mb-6 text-green-700">Running Campaigns</h2>
+                <h2 className="text-2xl font-bold mb-6 text-green-700 dark:text-white">Running Campaigns</h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {campaigns.map(c => (
-                        <div key={c._id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                        <div key={c._id} className="bg-white dark:bg-black rounded-lg shadow-md overflow-hidden">
                             <img src={c.photo} alt={c.Campaign} className="w-full h-48 object-cover" />
                             <div className="p-4">
                                 <h3 className="font-bold text-lg">{c.Campaign}</h3>
@@ -38,13 +38,13 @@ const Home = () => {
                 </div>
             </div>
 
-            <section className="my-16 p-10 rounded-lg bg-green-50">
-                <h2 className="text-2xl font-bold text-center text-green-700 mb-6">Popular Categories</h2>
+            <section className="my-16 p-10 rounded-lg dark:bg-gray-900 bg-green-50">
+                <h2 className="text-2xl dark:text-accent font-bold text-center text-green-700 mb-6">Popular Categories</h2>
 
-                <div className="grid grid-cols-2 lg:w-11/12 mx-auto lg:grid-cols-1 gap-4">
+                <div className="grid grid-cols-2 lg:w-11/12 mx-auto lg:grid-cols-1 gap-4 "  >
 
                     {/* Startup */}
-                    <label htmlFor="modal-startup" className="btn border border-green-600 rounded-full text-green-700 hover:bg-green-600 hover:text-white">
+                    <label htmlFor="modal-startup" className="btn border dark:text-white border-green-600  rounded-full text-green-700 hover:bg-green-600 hover:text-white">
                         Startup
                     </label>
                     <input type="checkbox" id="modal-startup" className="modal-toggle" />
@@ -65,7 +65,7 @@ const Home = () => {
                     </div>
 
                     {/* Personal Issue */}
-                    <label htmlFor="modal-personal" className="btn border border-green-600 rounded-full text-green-700 hover:bg-green-600 hover:text-white">
+                    <label htmlFor="modal-personal" className="dark:text-white btn border border-green-600 rounded-full text-green-700 hover:bg-green-600 hover:text-white">
                         Personal Issue
                     </label>
                     <input type="checkbox" id="modal-personal" className="modal-toggle" />
@@ -86,7 +86,7 @@ const Home = () => {
                     </div>
 
                     {/* Business */}
-                    <label htmlFor="modal-business" className="btn border border-green-600 rounded-full text-green-700 hover:bg-green-600 hover:text-white">
+                    <label htmlFor="modal-business" className="btn border border-green-600 rounded-full dark:text-white text-green-700 hover:bg-green-600 hover:text-white">
                         Business
                     </label>
                     <input type="checkbox" id="modal-business" className="modal-toggle" />
@@ -107,7 +107,7 @@ const Home = () => {
                     </div>
 
                     {/* Creative Idea */}
-                    <label htmlFor="modal-creative" className="btn border border-green-600 rounded-full text-green-700 hover:bg-green-600 hover:text-white">
+                    <label htmlFor="modal-creative" className="btn border border-green-600 rounded-full text-green-700 hover:bg-green-600 hover:text-white dark:text-white">
                         Creative Idea
                     </label>
                     <input type="checkbox" id="modal-creative" className="modal-toggle" />
@@ -132,18 +132,18 @@ const Home = () => {
 
 
             {/* How It Works */}
-            <section className="my-16 bg-green-50 p-10 rounded-lg">
-                <h2 className="text-2xl font-bold text-green-700 mb-6">How It Works</h2>
+            <section className="my-16 bg-green-50 dark:bg-gray-900 p-10 rounded-lg">
+                <h2 className="text-2xl font-bold text-green-700 dark:text-accent mb-6 ">How It Works</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="bg-white p-6 rounded-lg shadow-md">
+                    <div className="bg-white p-6 dark:bg-accent rounded-lg shadow-md">
                         <h3 className="font-semibold text-lg">Step 1</h3>
                         <p>Create your campaign with all details and share it.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-lg shadow-md">
+                    <div className="bg-white p-6 dark:bg-accent rounded-lg shadow-md">
                         <h3 className="font-semibold text-lg">Step 2</h3>
                         <p>Donors check your campaign and contribute.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-lg shadow-md">
+                    <div className="bg-white p-6 dark:bg-accent rounded-lg shadow-md">
                         <h3 className="font-semibold text-lg">Step 3</h3>
                         <p>Track donations and manage your campaign easily.</p>
                     </div>

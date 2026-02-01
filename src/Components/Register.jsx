@@ -94,9 +94,9 @@ const Register = () => {
 
   return (
     <div className="flex justify-center items-center lg:my-28 my-20 px-4">
-      <form onSubmit={handleRegister} className="relative bg-gray-100 border border-green-300 rounded-lg w-full max-w-6xl p-6 md:p-10 shadow-md">
+      <form onSubmit={handleRegister} className="relative bg-gray-100 border border-green-300 rounded-lg w-full max-w-6xl p-6 md:p-10 shadow-md dark:bg-black">
 
-        <legend className="lg:text-3xl text-2xl font-semibold absolute -top-6 left-6 text-green-600">
+        <legend className="lg:text-3xl text-2xl font-semibold absolute -top-6 left-6 text-green-600 dark:text-white">
           Create Account
         </legend>
 

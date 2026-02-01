@@ -50,14 +50,14 @@ const Update = () => {
 
       <form
         onSubmit={handleUpdateCampaign}
-        className="relative bg-gray-100 border border-green-300 rounded-lg w-full max-w-6xl p-6 md:p-10 shadow-md"
+        className="relative bg-gray-100 border border-green-300 rounded-lg w-full max-w-6xl p-6 md:p-10 shadow-md dark:bg-black"
       >
 
-        <legend className="lg:text-3xl text-2xl font-semibold absolute -top-6 left-6 text-green-600">
+        <legend className="lg:text-3xl text-2xl font-semibold absolute -top-6 left-6 text-green-600 dark:text-white">
           Update Campaign
         </legend>
 
-        <div className="flex flex-col md:flex-row gap-6 justify-center">
+        <div className="flex flex-col md:flex-row gap-6 justify-center ">
 
           {/* Left */}
           <div className="flex flex-col gap-4 flex-1">

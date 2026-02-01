@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Firebase/AuthProvider";
 import { toast } from "react-toastify";
+import ThemeToggle from "./ToggleTheme";
 
 const Header = () => {
 
@@ -14,19 +15,19 @@ const Header = () => {
       : "hover:text-green-600 transition";
 
   const links = (
-  <>
-    <NavLink to="/" className={navItemClass}>Home</NavLink>
-    <NavLink to="/campaigns" className={navItemClass}>All Campaign</NavLink>
+    <>
+      <NavLink to="/" className={navItemClass}>Home</NavLink>
+      <NavLink to="/campaigns" className={navItemClass}>All Campaign</NavLink>
 
-    {
-      user && <>
-        <NavLink to="/addCampaign" className={navItemClass}>Add Campaign</NavLink>
-        <NavLink to="/myCampaign" className={navItemClass}>My Campaign</NavLink>
-        <NavLink to="/myDonations" className={navItemClass}>My Donations</NavLink>
-      </>
-    }
-  </>
-);
+      {
+        user && <>
+          <NavLink to="/addCampaign" className={navItemClass}>Add Campaign</NavLink>
+          <NavLink to="/myCampaign" className={navItemClass}>My Campaign</NavLink>
+          <NavLink to="/myDonations" className={navItemClass}>My Donations</NavLink>
+        </>
+      }
+    </>
+  );
 
 
   const handleLogout = () => {
@@ -40,12 +41,12 @@ const Header = () => {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md ">
+    <header className="sticky top-0 z-50 bg-base-100 shadow-md border-green-200 border-b rounded-b-xl py-2">
       <div className="navbar px-4">
 
         {/* Left: Logo */}
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown ">
             <label tabIndex={0} className="btn text-red-600 btn-ghost pr-2 pl-0 lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +63,7 @@ const Header = () => {
             {/* Mobile Menu */}
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 p-3 shadow bg-base-100 rounded-box w-36 space-y-2"
+              className="menu menu-sm dropdown-content mt-3 p-3 shadow bg-base-100 rounded-box w-36 space-y-2 dark:bg-black dark:text-white"
             >
               {links}
             </ul>
@@ -72,7 +73,7 @@ const Header = () => {
             to="/"
             className="text-xl md:text-2xl font-bold tracking-wide text-green-600"
           >
-            Crowd<span className="text-red-600">Cube</span>
+            Crowd<span className="text-red-600 ">Cube</span>
           </Link>
         </div>
 
@@ -86,6 +87,13 @@ const Header = () => {
         {/* Right: Auth Buttons */}
         <div className="navbar-end gap-2 ">
 
+          {/* dark to light */}
+
+          <ThemeToggle />
+
+          
+
+
           {
             user ? <img
               className="w-10 h-10 rounded-full cursor-pointer"
@@ -95,20 +103,20 @@ const Header = () => {
             /> :
               <Link
                 to="/login"
-                className="btn text-green-600 btn-sm md:btn-md btn-outline"
+                className="btn btn-xs md:btn-sm lg:btn-md text-green-600  btn-outline"
               >
                 Login
               </Link>
           }
           {
             user ? <button
-              className="btn btn-sm md:btn-md text-white hover:bg-green-500 bg-green-600" onClick={handleLogout}
+              className="btn btn-xs md:btn-sm lg:btn-md text-white hover:bg-green-500 bg-green-600" onClick={handleLogout}
             >
               Log out
             </button> :
               <Link
                 to="/register"
-                className="btn btn-sm md:btn-md text-white hover:bg-green-500 bg-green-600"
+                className="btn btn-xs md:btn-sm lg:btn-md text-white hover:bg-green-500 bg-green-600"
               >
                 Register
               </Link>

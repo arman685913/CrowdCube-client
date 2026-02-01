@@ -16,15 +16,15 @@ const Donation = () => {
     return (
         <div className="px-4 md:px-10 lg:px-20 py-10">
             {myDonations.length === 0 ? (
-                <div className="flex justify-center items-center border rounded-4xl px-4 md:px-10 lg:px-20 py-10 border-green-300">
+                <div className="flex justify-center items-center border rounded-4xl px-4 md:px-10 lg:px-20 py-10 border-green-300 ">
                     <p>You have not donated to any campaign yet.</p>
                 </div>
             ) : (
                 <div>
                     {/* Desktop Table */}
                     <div className="hidden md:block">
-                        <table className="table w-full border border-green-300">
-                            <thead className="bg-green-100">
+                        <table className="table w-full border  border-green-300">
+                            <thead className="bg-green-100 dark:bg-black">
                                 <tr>
                                     <th>Campaign Name</th>
                                     <th>Amount</th>
@@ -34,7 +34,7 @@ const Donation = () => {
                             </thead>
                             <tbody>
                                 {myDonations.map((donation, index) => (
-                                    <tr key={index} className="hover:bg-gray-100">
+                                    <tr key={index} className="hover:bg-gray-100 dark:hover:bg-black/50">
                                         <td>{donation.campaignName}</td>
                                         <td>{donation.amount} Tk</td>
                                         <td>{new Date(donation.donatedAt).toLocaleDateString()}</td>
@@ -55,10 +55,10 @@ const Donation = () => {
                     {/* Mobile Cards */}
                     <div className="md:hidden grid grid-cols-1 gap-6">
                         {myDonations.map((donation, index) => (
-                            <div key={index} className="bg-white rounded-lg shadow-md p-4">
+                            <div key={index} className="bg-white dark:bg-black  rounded-lg shadow-md p-4">
                                 <h2 className="font-bold text-lg">{donation.campaignName}</h2>
-                                <p className="text-sm text-gray-600">Amount: {donation.amount} Tk</p>
-                                <p className="text-sm text-gray-600">
+                                <p className="text-sm text-gray-600 dark:text-white/70">Amount: {donation.amount} Tk</p>
+                                <p className="text-sm dark:text-white/70 text-gray-600">
                                     Donated On: {new Date(donation.donatedAt).toLocaleDateString()}
                                 </p>
                                 <Link

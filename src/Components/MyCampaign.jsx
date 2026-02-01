@@ -74,8 +74,8 @@ const MyCampaign = () => {
 
           {/* Desktop Table */}
           <div className="hidden md:block">
-            <table className="table w-full border border-green-300">
-              <thead className="bg-green-100">
+            <table className="table w-full border  border-green-300">
+              <thead className="bg-green-100 dark:bg-black">
                 <tr>
                   <th>Active</th>
                   <th>Name</th>
@@ -88,7 +88,7 @@ const MyCampaign = () => {
               </thead>
               <tbody>
                 {myCampaigns.map(campaign => (
-                  <tr key={campaign._id} className="hover:bg-gray-100">
+                  <tr key={campaign._id} className="hover:bg-gray-100 dark:hover:bg-black/30">
                     <th>
                       <input
                         type="checkbox"
@@ -139,7 +139,7 @@ const MyCampaign = () => {
           {/* Mobile Cards */}
           <div className="md:hidden grid grid-cols-1 gap-6">
             {myCampaigns.map(campaign => (
-              <div key={campaign._id} className="bg-white rounded-lg shadow-md p-4">
+              <div key={campaign._id} className="bg-white dark:bg-black rounded-lg shadow-md p-4">
                 <img
                   src={campaign.photo}
                   alt={campaign.Campaign}

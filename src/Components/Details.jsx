@@ -38,7 +38,7 @@ const Details = () => {
 
     return (
         <div className="max-w-6xl mx-auto p-4 lg:p-10">
-            <div className="bg-white shadow-lg rounded-lg overflow-hidden md:flex md:flex-row flex-col">
+            <div className="bg-white shadow-lg rounded-lg dark:bg-black  overflow-hidden md:flex md:flex-row flex-col">
                 
                 {/* Campaign Image */}
                 <div className="md:w-1/2 w-full h-64 md:h-auto">
@@ -53,9 +53,9 @@ const Details = () => {
                 <div className="md:w-1/2 w-full p-6 flex flex-col justify-between">
                     <div>
                         <h1 className="text-3xl md:text-4xl font-bold text-green-700">{campaign.Campaign}</h1>
-                        <p className="mt-4 text-gray-700 text-sm md:text-base">{campaign.description}</p>
+                        <p className="mt-4 text-gray-700 dark:text-white text-sm md:text-base">{campaign.description}</p>
 
-                        <div className="mt-6 space-y-2 text-gray-800">
+                        <div className="mt-6 space-y-2 text-gray-800 dark:text-white">
                             <p><span className="font-semibold">Type:</span> {campaign.type}</p>
                             <p><span className="font-semibold">Minimum Donation:</span> {campaign.amount} Tk</p>
                             <p><span className="font-semibold">Deadline:</span> {campaign.date}</p>
