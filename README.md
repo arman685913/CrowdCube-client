@@ -1,16 +1,145 @@
-# React + Vite
+# CrowdCube -- Crowdfunding Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CrowdCube is a full‑stack crowdfunding web application that allows users
+to create campaigns and raise funds for personal projects, startups, and
+creative ideas. Users can explore campaigns, contribute donations, and
+manage their own fundraising campaigns through an intuitive dashboard.
 
-Currently, two official plugins are available:
+------------------------------------------------------------------------
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Links
 
-## React Compiler
+-   Live Website: https://crowd-cube-app.web.app
+-   Server API: https://crowdcube-server.onrender.com
+-   Client Repository: https://github.com/arman685913/CrowdCube-client
+-   Server Repository: https://github.com/arman685913/CrowdCube-server
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+------------------------------------------------------------------------
 
-## Expanding the ESLint configuration
+# ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-   User Authentication (Email & Password)
+-   Create, Update, and Delete Campaigns
+-   Browse all campaigns
+-   Sort campaigns by minimum donation
+-   Donate to campaigns
+-   Personal donation history
+-   Responsive design (Mobile / Tablet / Desktop)
+-   Modern UI with notifications and carousel banner
+-   Dark / Light mode
+
+------------------------------------------------------------------------
+
+# 🛠 Tech Stack
+
+## Frontend
+
+-   React.js
+-   React Router
+-   Tailwind CSS
+-   Axios
+-   React Icons
+-   React Toastify
+
+## Backend
+
+-   Node.js
+-   Express.js
+-   MongoDB
+-   JWT Authentication
+
+## Other Tools
+
+-   Firebase (Authentication & Hosting)
+-   Render (Backend Hosting)
+-   Git & GitHub
+
+------------------------------------------------------------------------
+
+# 📂 Project Structure
+
+    CrowdCube
+    │
+    ├── client
+    │   ├── src
+    │   │   ├── components
+    │   │   ├── pages
+    │   │   ├── hooks
+    │   │   ├── routes
+    │   │   └── assets
+    │
+    ├── server
+    │   ├── routes
+    │   ├── controllers
+    │   ├── middleware
+    │   ├── models
+    │   └── config
+
+------------------------------------------------------------------------
+
+# ⚙️ Installation & Setup
+
+## Clone the Repository
+
+``` bash
+git clone https://github.com/arman685913/CrowdCube-client.git
+git clone https://github.com/arman685913/CrowdCube-server.git
+```
+
+## Install Dependencies
+
+### Client
+
+``` bash
+cd CrowdCube-client
+npm install
+```
+
+### Server
+
+``` bash
+cd CrowdCube-server
+npm install
+```
+
+## Environment Variables
+
+Create a `.env` file in the server folder:
+
+    PORT=5000
+    DB_USER=your_mongodb_user
+    DB_PASS=your_mongodb_password
+    JWT_SECRET=your_secret_key
+
+## Run the Project
+
+### Start Server
+
+``` bash
+nodemon index.js
+```
+
+### Start Client
+
+``` bash
+npm run dev
+```
+
+------------------------------------------------------------------------
+
+# 🚀 Future Improvements
+
+-   Payment Gateway Integration
+-   Admin Dashboard
+-   Campaign analytics
+-   Social sharing
+-   Email notification system
+
+------------------------------------------------------------------------
+
+# 👨‍💻 Author
+
+Arman Farazi\
+GitHub: https://github.com/arman685913
+
+------------------------------------------------------------------------
