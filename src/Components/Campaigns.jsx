@@ -1,27 +1,46 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter';
 import { toast } from 'react-toastify';
-import { Tooltip } from 'react-tooltip'; // <-- import react-tooltip
-import 'react-tooltip/dist/react-tooltip.css'; // <-- import CSS
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
 const Campaigns = () => {
   const campaigns = useLoaderData();
+
+  // useEffect(() => {
+  //   fetch('https://crowdcube-server.onrender.com/campaigns')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       if (data.insertedId) {
+  //         toast.success("Campaign added successfully");
+  //       }
+  //     })
+  // }, [])
+
+  // useEffect(() => {
+  //   axios.get('/https://crowdcube-server.onrender.com/campaigns')
+  //     .then(data => {
+  //       alert(data.data)
+  //     })
+  // }, [])
+
   const [allCampaigns, setAllCampaigns] = useState(campaigns);
-  
+
   const handleSortAscending = () => {
-      const sortData = [...allCampaigns].sort((a,b) => a.amount - b.amount);
-      setAllCampaigns(sortData)
-      toast.info("Sorted by ascending donation amount");
+    const sortData = [...allCampaigns].sort((a, b) => a.amount - b.amount);
+    setAllCampaigns(sortData)
+    toast.info("Sorted by ascending donation amount");
   }
   const handleSortE = () => {
-      setAllCampaigns(campaigns)
-      toast.info("Reset to original order");
+    setAllCampaigns(campaigns)
+    toast.info("Reset to original order");
   }
   const handleSortD = () => {
-      const sortData = [...allCampaigns].sort((a,b) => b.amount - a.amount);
-      setAllCampaigns(sortData)
-      toast.info("Sorted by descending donation amount"); 
+    const sortData = [...allCampaigns].sort((a, b) => b.amount - a.amount);
+    setAllCampaigns(sortData)
+    toast.info("Sorted by descending donation amount");
   }
 
   return (
@@ -45,24 +64,24 @@ const Campaigns = () => {
         <div className='flex gap-2 items-center'>
           <p className='text-red-500 text-sm border px-1'>Sorting</p>
 
-          <button 
+          <button
             data-tooltip-id="reset-tooltip"
             data-tooltip-content="Reset to original order"
-            onClick={handleSortE}  
+            onClick={handleSortE}
             className='px-2 cursor-pointer text-green-600 text-xs border rounded-full'
           >↔</button>
 
-          <button 
+          <button
             data-tooltip-id="asc-tooltip"
             data-tooltip-content="Sort by ascending donation"
-            onClick={handleSortAscending} 
+            onClick={handleSortAscending}
             className='px-2 cursor-pointer text-yellow-600 text-xs border rounded-full'
           >↓</button>
 
-          <button 
+          <button
             data-tooltip-id="desc-tooltip"
             data-tooltip-content="Sort by descending donation"
-            onClick={handleSortD}  
+            onClick={handleSortD}
             className='px-2 cursor-pointer text-red-600 text-xs border rounded-full'
           >↑</button>
 

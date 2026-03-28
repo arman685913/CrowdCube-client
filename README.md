@@ -1,16 +1,183 @@
-# React + Vite
+# CrowdCube
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CrowdCube is a full-stack crowdfunding application that allows users to create campaigns, make donations, and track active campaigns.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Demo & Repositories
 
-## React Compiler
+* **Frontend Live:** [https://crowd-cube-app.web.app](https://crowd-cube-app.web.app)
+* **Backend Live:** [https://crowdcube-server.onrender.com](https://crowdcube-server.onrender.com)
+* **Frontend GitHub:** [https://github.com/arman685913/CrowdCube-client.git](https://github.com/arman685913/CrowdCube-client.git)
+* **Backend GitHub:** [https://github.com/arman685913/CrowdCube-server](https://github.com/arman685913/CrowdCube-server.git)
+* **Assignment Requirement:** [https://docs.google.com/document/u/0/d/1LBwPtnVCpu_GvFNMVX5vSDDZf-Ux00bzR_S1s4yuFsg/mobilebasic](https://docs.google.com/document/u/0/d/1LBwPtnVCpu_GvFNMVX5vSDDZf-Ux00bzR_S1s4yuFsg/mobilebasic)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Table of Contents
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* [Features](#features)
+* [Technologies](#technologies)
+* [Project Structure](#project-structure)
+* [Getting Started](#getting-started)
+* [API Routes](#api-routes)
+* [Environment Variables](#environment-variables)
+* [Deployment](#deployment)
+
+---
+
+## Features
+
+* User registration and profile updates
+* Create, update, delete, and view campaigns
+* Track donations for campaigns
+* Fetch active campaigns
+* Serverless deployment for backend on Vercel
+* Responsive React frontend
+
+---
+
+## Technologies
+
+* **Frontend:** React.js, React Router, TailwindCSS, DaisyUI
+* **Backend:** Node.js, Express.js, MongoDB Atlas
+* **Deployment:** Vercel (backend), Render / Vercel (frontend)
+* **Others:** CORS, dotenv
+
+---
+
+## Project Structure
+
+```
+CrowdCube/
+├─ CrowdCube-server/      # Backend
+│  ├─ api/                # Serverless routes for Vercel
+│  ├─ package.json
+│  └─ ...
+├─ CrowdCube-client/      # Frontend
+│  ├─ src/
+│  ├─ package.json
+│  └─ ...
+```
+
+---
+
+## Getting Started
+
+### Backend Setup
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/arman685913/CrowdCube-server.git
+cd CrowdCube-server
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Add environment variables (create `.env.local` in project root)
+
+```env
+DATABASE=yourMongoDBUsername
+PASS=yourMongoDBPassword
+```
+
+4. Run locally
+
+```bash
+npm run dev
+```
+
+The backend will run on `http://localhost:3000`.
+
+---
+
+### Frontend Setup
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/arman685913/CrowdCube-client.git
+cd CrowdCube-client
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Update API base URL in frontend `.env` or config:
+
+```
+VITE_API_URL=http://localhost:3000
+```
+
+4. Run locally
+
+```bash
+npm run dev
+```
+
+The frontend will run on `http://localhost:5173`.
+
+---
+
+## API Routes
+
+### Users
+
+| Method | Route         | Description         |
+| ------ | ------------- | ------------------- |
+| POST   | /users        | Create a new user   |
+| PATCH  | /users/:email | Update user profile |
+
+### Donations
+
+| Method | Route    | Description        |
+| ------ | -------- | ------------------ |
+| GET    | /donated | Get all donations  |
+| POST   | /donated | Add a new donation |
+
+### Campaigns
+
+| Method | Route             | Description                   |
+| ------ | ----------------- | ----------------------------- |
+| GET    | /campaigns        | Get all campaigns             |
+| GET    | /campaigns/active | Get active campaigns (next 6) |
+| GET    | /campaigns/:id    | Get single campaign by ID     |
+| POST   | /campaigns        | Create a new campaign         |
+| PUT    | /campaigns/:id    | Update a campaign             |
+| DELETE | /campaigns/:id    | Delete a campaign             |
+
+> **Note:** For Vercel deployment, backend API URL becomes `https://crowd-cube-server-five.vercel.app/api`
+
+---
+
+## Environment Variables
+
+* **Backend (`.env.local`)**
+
+```
+DATABASE=<Your MongoDB username>
+PASS=<Your MongoDB password>
+```
+
+* **Frontend (`.env`)**
+
+```
+VITE_API_URL=<Backend URL, e.g., https://crowd-cube-server-five.vercel.app/api>
+```
+
+---
+
+## Deployment
+
+* **Backend:** Deployed on Vercel
+* **Frontend:** Deployed on Render / Vercel
+
+> Serverless backend ensures all Express routes are compatible with Vercel functions.

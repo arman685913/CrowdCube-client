@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Firebase/AuthProvider';
 import { toast } from 'react-toastify';
 import { Typewriter } from 'react-simple-typewriter';
+import axios from 'axios';
 
 const AddCampaign = () => {
 
@@ -19,19 +20,29 @@ const AddCampaign = () => {
             return toast.info("Minimum donation must be greater than 0");
         }
 
-        fetch('https://crowdcube-server.onrender.com/campaigns', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(campaign)
-        })
-            .then(res => res.json())
+        axios.post('https://crowdcube-server.onrender.com/campaigns', campaign)
             .then(data => {
-                if (data.insertedId) {
+                console.log(data.data.insertedId)
+                if (data.data.insertedId) {
                     toast.success("Campaign added successfully");
                     form.reset();
                 }
             })
             .catch(err => console.error(err));
+
+        // fetch('https://crowdcube-server.onrender.com/campaigns', {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify(campaign)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         if (data.insertedId) {
+        //             toast.success("Campaign added successfully");
+        //             form.reset();
+        //         }
+        //     })
+        //     .catch(err => console.error(err));
 
     }
 
