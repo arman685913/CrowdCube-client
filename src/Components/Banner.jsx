@@ -33,7 +33,7 @@ useEffect(() => {
       <div className="carousel w-full">
         {/* Slide 1 */}
         <div id="slide1" className="carousel-item relative w-full">
-          <img src="https://tfe-bd.sgp1.cdn.digitaloceanspaces.com/posts/77227/startup.jpg" className="w-full md:h-[500px] object-cover" alt="Startups Support" />
+          <img src="https://i.ibb.co.com/wFb6qy0n/lets-go-green-together-hands-260nw-2437815033.jpg" className="w-full md:h-[500px] object-cover" alt="Startups Support" />
           <div className="absolute inset-0 bg-black/30"></div> {/* overlay */}
           <div className="absolute md:bottom-16 md:left-12 bottom-0.5 text-white bg-black/50 px-4 py-2">
             <h1 className="text-3xl md:text-5xl font-bold">Startups Support</h1>
